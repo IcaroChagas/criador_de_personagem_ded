@@ -1,7 +1,8 @@
 # System test
+# Test section
 
 ## Importing modules
-from criador_de_personagem_ded.criador.classe import Player
+from criador.classe import Player
 
 ## Creating Player
 character = Player()
