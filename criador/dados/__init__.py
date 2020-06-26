@@ -2,6 +2,8 @@
 
 
 ## Races
+from typing import Dict, List
+
 races = ['dwarf', 'elf', 'halfling', 'half_elf', 'human', 'dragonborn', 'half_orc', 'tiefling', 'gnome']
 
 
@@ -25,6 +27,7 @@ s_races = {'dwarf': ['mountain dwarf', 'hill dwarf'],
            'tiefling': ['tiefling'],
            'gnome': ['rock gnome', 'forest gnome'],
            'half_orc': ['half_orc']}
+
 
 
 ## Classes

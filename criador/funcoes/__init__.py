@@ -1,11 +1,10 @@
 # Functions
 
-from criador_de_personagem_ded.criador.dados import initial_ability_values, s_races
+from criador.dados import initial_ability_values, s_races
 import random
 
 
-## Random select of ability values for the player to choose
-
+# Random select of ability values for the player to choose
 def random_ability_values():
     abl_list = []
     abl_value = 0
@@ -19,8 +18,7 @@ def random_ability_values():
     return abl_value
 
 
-## Get the list of ability values for each race
-
+# Get the list of ability values for each race
 def initial_abl_list(name):
     list = []
     for c in range(len(initial_ability_values)):

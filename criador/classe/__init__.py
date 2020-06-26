@@ -1,11 +1,11 @@
 # Classes
 
-from criador_de_personagem_ded.criador.dados import *
-from criador_de_personagem_ded.criador.funcoes import *
-from criador_de_personagem_ded.criador.interface import *
+from criador.dados import *
+from criador.funcoes import *
+from criador.interface import *
 
 
-## Defining class Player
+# Defining class Player
 
 class Player:
 
@@ -14,6 +14,7 @@ class Player:
         self.race = race
         self.clss_path = clss_path
         self.s_race = s_race
+        self.hit_points = 5
         self.strength = 0
         self.charisma = 0
         self.intelligence = 0
@@ -33,7 +34,7 @@ class Player:
                          {'Dexterity': self.dexterity},
                          {'Charisma': self.charisma}]
 
-    ### Print Attributes
+    # Print Attributes
     def my_atr(self):
         print("\n", "-" * 42)
         print("Your attributes:\n")
@@ -43,7 +44,7 @@ class Player:
             if p2 != '':
                 print(p1, ":", p2)
 
-    ### Print Abilities
+    # Print Abilities
     def my_abl(self):
         print("\n", "-" * 42)
         print(" Your Abilities: \n")
@@ -107,13 +108,14 @@ class Player:
 
     def choose_race(self):
 
-        ## Choosing Race
+        # Choosing Race
         self.race = menu_choice(races, 'Races')
 
-        ## Choosing Sub-race
+        # Choosing Sub-race
         self.s_race = menu_choice(s_races.get(self.race), 'Race traces')
 
-        ## Updating list of attributes
+        # Updating list of attributes
+        # icaro q porra é essa?
         self.list_prm = [{"class": self.clss},
                          {"race": self.race},
                          {"sub_clss": self.clss_path},
@@ -121,30 +123,66 @@ class Player:
 
     def choose_class(self):
 
-        ## Choosing Class
+        # Choosing Class
         clss_choice_num = menu_num(classes, 'Classes')
         self.clss = classes[clss_choice_num - 1]
 
-        ## Updating list of attributes
+        # Updating list of attributes
         self.list_prm = [{"class": self.clss},
                          {"race": self.race},
                          {"sub_clss": self.clss_path},
                          {"sub_race": self.s_race}]
 
-    ### Print character sheet
+    def choose_random_class(self):
+        self.clss = classes[random.randint(0, len(classes) - 1)]
 
-    def my_sheet(self):  # todo finish this function
+        self.list_prm = [{"class": self.clss},
+                         {"race": self.race},
+                         {"sub_clss": self.clss_path},
+                         {"sub_race": self.s_race}]
+
+    def choose_random_race(self):
+        self.race = races[random.randint(0, len(races) - 1)]
+        self.s_race = sub_div(self.race)[random.randint(0, len(sub_div(self.race)) - 1)]
+
+        self.list_prm = [{"class": self.clss},
+                         {"race": self.race},
+                         {"sub_clss": self.clss_path},
+                         {"sub_race": self.s_race}]
+
+    def random_abl(self):
+        fix_list = [15, 14, 13, 12, 10, 8]
+        random.shuffle(fix_list)
+        self.charisma = fix_list[0]
+        self.dexterity = fix_list[1]
+        self.strength = fix_list[2]
+        self.intelligence = fix_list[3]
+        self.wisdom = fix_list[4]
+        self.constituition = fix_list[5]
+
+        self.list_abl = [{'Strength': self.strength},
+                         {'Intelligence': self.intelligence},
+                         {'Constitution': self.constituition},
+                         {'Wisdom': self.wisdom},
+                         {'Dexterity': self.dexterity},
+                         {'Charisma': self.charisma}]
+
+    def create_random_player(self):
+        self.choose_random_race()
+        self.choose_random_class()
+        self.random_abl()
+
+    def random_atributes(self):
         pass
 
+    def get_proficiency(self):
+        # will return the proficiency of the character
+        pass
 
-class Race:
-    def __init__(self, race_name, modifier):
-        self.race_name = race_name
-        self.modifier = modifier
+    def get_hit_points(self):
+        # will return the character's hit points
+        pass
 
-
-class RacialTrace(Race):
-    def __init__(self, race_name, rt_name, rt_modifier):
-        super(RacialTrace, self).__init__(race_name)
-        self.rt_name = rt_name
-        self.rt_modifier = rt_modifier
+    def my_sheet(self):
+        # Print character sheet
+        pass
