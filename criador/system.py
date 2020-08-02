@@ -1,6 +1,7 @@
 # System test
+# Test section
 
-# Importing modules
+## Importing modules
 from criador.classe import Player
 
 # Creating Player
